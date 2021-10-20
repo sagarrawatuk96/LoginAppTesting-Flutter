@@ -78,8 +78,5 @@ class LoginController extends GetxController {
     });
   }
 
-// on pressing login
-  void onLogin() {
-    Get.toNamed(Routes.profile);
-  }
+
 }
