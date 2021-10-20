@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:get/route_manager.dart';
-import 'package:untitled/home/controller/home_controller.dart';
+import 'package:untitled/login/controller/login_controller.dart';
+import 'package:untitled/login/view/login.dart';
 import 'package:untitled/routes/pages.dart';
 import 'package:untitled/routes/routes.dart';
 
@@ -17,9 +18,7 @@ void main() {
   group('Testing Homepage', () {
     testWidgets('Testing Home', (WidgetTester tester) async {
       await tester.pumpWidget(createMainApp());
-      var homeViewController = Get.put(HomeViewController());
-      homeViewController.toString();
-
+   
       final emailField = find.byKey(const Key('email-field-key'));
       expect(emailField, findsOneWidget);
 

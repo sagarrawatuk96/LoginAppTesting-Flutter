@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:untitled/constants/validations.dart';
-import 'package:untitled/home/controller/home_controller.dart';
+import 'package:untitled/login/controller/login_controller.dart';
 import 'package:untitled/routes/routes.dart';
 
-class HomePage extends StatelessWidget {
-  HomePage({Key? key}) : super(key: key);
-  final HomeViewController homeViewController = Get.put(HomeViewController());
+class LoginPage extends StatelessWidget {
+  LoginPage({Key? key}) : super(key: key);
+  final LoginController homeViewController = Get.put(LoginController());
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
