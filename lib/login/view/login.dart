@@ -173,7 +173,7 @@ class LoginPage extends StatelessWidget {
                           50) // put the width and height you want
                       ),
                   onPressed: homeViewController.isEnabled.value
-                      ? () => Get.toNamed(Routes.home)
+                      ? () => Get.toNamed(Routes.navigation)
                       : null,
                   child: const Text(
                     'Login',

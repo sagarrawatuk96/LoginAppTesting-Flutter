@@ -17,8 +17,7 @@ class MyApp extends StatelessWidget {
      GetMaterialApp(
       title: 'Login App',
       debugShowCheckedModeBanner: false,
-      initialRoute: Routes.login,  // Initial page to show on startup
+      initialRoute: Routes.navigation,  // Initial page to show on startup
       getPages: pages,   // List of all available Pages
     );
-
 }
