@@ -1,67 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:get/get_instance/src/extension_instance.dart';
-import 'package:get/route_manager.dart';
-import 'package:untitled/login/controller/login_controller.dart';
-import 'package:untitled/login/view/login.dart';
+import 'package:get/get.dart';
 import 'package:untitled/routes/pages.dart';
 import 'package:untitled/routes/routes.dart';
 
 Widget createMainApp() => GetMaterialApp(
       title: 'Login App',
       debugShowCheckedModeBanner: false,
-      initialRoute: Routes.login,
+      initialRoute: Routes.navigation,
       getPages: pages,
     );
-
 void main() {
-  group('Testing Homepage', () {
-    testWidgets('Testing Home', (WidgetTester tester) async {
+  group('Home page tests', () {
+    testWidgets('Testing widgets on homepage', (WidgetTester tester) async {
       await tester.pumpWidget(createMainApp());
-   
-      final emailField = find.byKey(const Key('email-field-key'));
-      expect(emailField, findsOneWidget);
-
-      final passwordField = find.byKey(const Key('password-field-key'));
-      expect(passwordField, findsOneWidget);
-
-      var loginButton = find.byKey(const Key('login-button-key'));
-      expect(loginButton, findsOneWidget);
-
-      await tester.enterText(emailField, 'sagarrawat');
+      await tester.tap(find.byKey(const Key('tab_2')));
       await tester.pumpAndSettle(const Duration(seconds: 1));
 
-      expect(find.text('Please enter valid Email Address'), findsOneWidget);
-
-      await tester.enterText(emailField, 'sagarrawat@gmail');
+      await tester.tap(find.byKey(const Key('tab_3')));
       await tester.pumpAndSettle(const Duration(seconds: 1));
 
-      expect(find.text('Please enter valid Email Address'), findsOneWidget);
-
-      await tester.enterText(emailField, 'sagarrawat@gmail.com');
-      await tester.pumpAndSettle();
-
-      expect(find.text('Please enter valid Email Address'), findsNothing);
-      await tester.enterText(passwordField, 'Sagar');
+      await tester.tap(find.byKey(const Key('tab_1')));
       await tester.pumpAndSettle(const Duration(seconds: 1));
 
-      expect(find.byIcon(Icons.check_circle), findsNWidgets(4));
-      await tester.enterText(passwordField, 'Sagar12');
-      await tester.pumpAndSettle(const Duration(seconds: 1));
+      await tester.fling(find.byType(SingleChildScrollView),const Offset(0, -300),3000);
+      expect(find.byKey(const Key('top_0')), findsOneWidget);
 
-      await tester.enterText(passwordField, 'Sagar12@');
-      await tester.pumpAndSettle(const Duration(seconds: 1));
+      await tester.fling(find.byType(ListView),const Offset(-300, 0),3000);
+      expect(find.byKey(const Key('top_5')), findsOneWidget);
 
-      await tester.tap(loginButton);
-      await tester.pumpAndSettle();
-
-      expect(find.text('Welcome'), findsOneWidget);
-
-      await tester.tap(find.byIcon(Icons.arrow_back).first);
-      await tester.pumpAndSettle(const Duration(seconds: 1));
-
-      expect(loginButton, findsOneWidget);
- 
     });
   });
 }
