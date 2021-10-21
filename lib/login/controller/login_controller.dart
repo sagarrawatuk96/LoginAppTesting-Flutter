@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:untitled/routes/routes.dart';
 
 class LoginController extends GetxController {
   TextEditingController emailController = TextEditingController();

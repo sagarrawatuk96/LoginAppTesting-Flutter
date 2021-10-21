@@ -9,8 +9,10 @@ class LoginPage extends StatelessWidget {
   final LoginController homeViewController = Get.put(LoginController());
   @override
   Widget build(BuildContext context) => Scaffold(
+        backgroundColor: Colors.grey.shade900,
         appBar: AppBar(
-          title: const Text('Login'),
+          elevation: 0,
+          backgroundColor: Colors.transparent,
         ),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
@@ -20,33 +22,47 @@ class LoginPage extends StatelessWidget {
                 child: Obx(
                   () => ListView(
                     children: [
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 70,),
+                        child: Image.asset(
+                          'assets/images/netflix_logo.png',
+                        ),
+                      ),
+                      const SizedBox(height: 30,),
                       const Text(
                         'Email Address',
                         style: TextStyle(
-                            fontSize: 15, fontWeight: FontWeight.w600),
+                            fontSize: 15,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.white),
                       ),
                       const SizedBox(
                         height: 20,
                       ),
                       TextFormField(
                         key: const Key('email-field-key'),
+                        style: TextStyle(
+                          color: Colors.grey.shade300,
+                        ),
                         controller: homeViewController.emailController,
                         validator: (text) => emailValidation(
                             text!), // Validates the email address
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         keyboardType: TextInputType.emailAddress,
                         decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(5),
-                            borderSide: const BorderSide(
-                              width: 0,
-                              style: BorderStyle.none,
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(5),
+                              borderSide: const BorderSide(
+                                width: 0,
+                                style: BorderStyle.none,
+                              ),
                             ),
-                          ),
-                          fillColor: Colors.grey.shade300,
-                          filled: true,
-                          hintText: 'Enter email',
-                        ),
+                            fillColor: Colors.black54,
+                            filled: true,
+                            hintText: 'Enter email',
+                            hintStyle: TextStyle(
+                              color: Colors.grey.shade300,
+                            )),
                       ),
                       const SizedBox(
                         height: 20,
@@ -54,13 +70,18 @@ class LoginPage extends StatelessWidget {
                       const Text(
                         'Password',
                         style: TextStyle(
-                            fontSize: 15, fontWeight: FontWeight.w600),
+                            fontSize: 15,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.white),
                       ),
                       const SizedBox(
                         height: 20,
                       ),
                       TextFormField(
                         key: const Key('password-field-key'),
+                        style: TextStyle(
+                          color: Colors.grey.shade300,
+                        ),
                         controller: homeViewController.passwordController,
                         obscureText: true,
                         onChanged: (text) {
@@ -70,17 +91,19 @@ class LoginPage extends StatelessWidget {
                           }
                         },
                         decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(5),
-                            borderSide: const BorderSide(
-                              width: 0,
-                              style: BorderStyle.none,
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(5),
+                              borderSide: const BorderSide(
+                                width: 0,
+                                style: BorderStyle.none,
+                              ),
                             ),
-                          ),
-                          fillColor: Colors.grey.shade300,
-                          filled: true,
-                          hintText: 'Enter password',
-                        ),
+                            fillColor: Colors.black54,
+                            filled: true,
+                            hintText: 'Enter password',
+                            hintStyle: TextStyle(
+                              color: Colors.grey.shade300,
+                            )),
                       ),
                       homeViewController.showPasswordValidations
                               .value //shows password validations on interaction
@@ -88,15 +111,17 @@ class LoginPage extends StatelessWidget {
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 15, vertical: 15),
                               decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(5),
-                                  border: Border.all(
-                                      width: 0.5, color: Colors.grey.shade300)),
+                                borderRadius: BorderRadius.circular(5),
+                              ),
                               child: Column(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   Row(
                                     children: [
-                                      const Text('More than 6 Characters'),
+                                      const Text(
+                                        'More than 6 Characters',
+                                        style: TextStyle(color: Colors.white),
+                                      ),
                                       const SizedBox(
                                         width: 5,
                                       ),
@@ -112,7 +137,10 @@ class LoginPage extends StatelessWidget {
                                   ),
                                   Row(
                                     children: [
-                                      const Text('At least One Digit'),
+                                      const Text(
+                                        'At least One Digit',
+                                        style: TextStyle(color: Colors.white),
+                                      ),
                                       const SizedBox(
                                         width: 5,
                                       ),
@@ -128,7 +156,10 @@ class LoginPage extends StatelessWidget {
                                   ),
                                   Row(
                                     children: [
-                                      const Text('One special Character'),
+                                      const Text(
+                                        'One special Character',
+                                        style: TextStyle(color: Colors.white),
+                                      ),
                                       const SizedBox(
                                         width: 5,
                                       ),
@@ -144,7 +175,10 @@ class LoginPage extends StatelessWidget {
                                   ),
                                   Row(
                                     children: [
-                                      const Text('One uppercase Character'),
+                                      const Text(
+                                        'One uppercase Character',
+                                        style: TextStyle(color: Colors.white),
+                                      ),
                                       const SizedBox(
                                         width: 5,
                                       ),
@@ -170,16 +204,14 @@ class LoginPage extends StatelessWidget {
                   key: const Key('login-button-key'),
                   style: ElevatedButton.styleFrom(
                       minimumSize: Size(Get.size.width,
-                          50) // put the width and height you want
-                      ),
+                          50), // put the width and height you want
+                      primary: Colors.red),
                   onPressed: homeViewController.isEnabled.value
                       ? () => Get.toNamed(Routes.navigation)
                       : null,
                   child: const Text(
                     'Login',
-                    style: TextStyle(
-                      fontSize: 15,
-                    ),
+                    style: TextStyle(fontSize: 15, color: Colors.white),
                   ),
                 ),
               )
