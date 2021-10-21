@@ -13,7 +13,7 @@ class LoginController extends GetxController {
 
   @override
   void onInit() {
-    // adding listeners on init
+    // adding listeners textfields
     addListeners(); 
     super.onInit();
   }
@@ -68,6 +68,7 @@ class LoginController extends GetxController {
             passwordCheck3.value &&
             passwordCheck4.value) {
           isEnabled.value = true;
+
         } else {
           isEnabled.value = false;
         }

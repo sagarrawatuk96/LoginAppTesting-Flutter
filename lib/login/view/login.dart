@@ -20,15 +20,19 @@ class LoginPage extends StatelessWidget {
             children: [
               Expanded(
                 child: Obx(
-                  () => ListView(
+                  ()=> ListView(
                     children: [
                       Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 70,),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 70,
+                        ),
                         child: Image.asset(
                           'assets/images/netflix_logo.png',
                         ),
                       ),
-                      const SizedBox(height: 30,),
+                      const SizedBox(
+                        height: 30,
+                      ),
                       const Text(
                         'Email Address',
                         style: TextStyle(
@@ -45,8 +49,8 @@ class LoginPage extends StatelessWidget {
                           color: Colors.grey.shade300,
                         ),
                         controller: homeViewController.emailController,
-                        validator: (text) => emailValidation(
-                            text!), // Validates the email address
+                        validator: (text) =>
+                            emailValidation(text!), // Validates the email address
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         keyboardType: TextInputType.emailAddress,
                         decoration: InputDecoration(
@@ -116,7 +120,7 @@ class LoginPage extends StatelessWidget {
                               child: Column(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
-                                  Row(
+                                 homeViewController.passwordCheck1.value? const SizedBox.shrink() :Row(
                                     children: [
                                       const Text(
                                         'More than 6 Characters',
@@ -125,17 +129,15 @@ class LoginPage extends StatelessWidget {
                                       const SizedBox(
                                         width: 5,
                                       ),
-                                      Icon(Icons.check_circle,
-                                          color: homeViewController
-                                                  .passwordCheck1.value
-                                              ? Colors.green
-                                              : Colors.grey),
+                                      const Icon(Icons.info_outline,
+                                          size: 20,
+                                          color:  Colors.red),
                                     ],
                                   ),
                                   const SizedBox(
                                     height: 5,
                                   ),
-                                  Row(
+                                 homeViewController.passwordCheck2.value? const SizedBox.shrink() : Row(
                                     children: [
                                       const Text(
                                         'At least One Digit',
@@ -144,17 +146,15 @@ class LoginPage extends StatelessWidget {
                                       const SizedBox(
                                         width: 5,
                                       ),
-                                      Icon(Icons.check_circle,
-                                          color: homeViewController
-                                                  .passwordCheck2.value
-                                              ? Colors.green
-                                              : Colors.grey),
+                                      const Icon(Icons.info_outline,
+                                          size: 20,
+                                          color:  Colors.red),
                                     ],
                                   ),
                                   const SizedBox(
                                     height: 5,
                                   ),
-                                  Row(
+                                 homeViewController.passwordCheck3.value? const SizedBox.shrink() : Row(
                                     children: [
                                       const Text(
                                         'One special Character',
@@ -163,17 +163,15 @@ class LoginPage extends StatelessWidget {
                                       const SizedBox(
                                         width: 5,
                                       ),
-                                      Icon(Icons.check_circle,
-                                          color: homeViewController
-                                                  .passwordCheck3.value
-                                              ? Colors.green
-                                              : Colors.grey),
+                                     const Icon(Icons.info_outline,
+                                          size: 20,
+                                          color:  Colors.red),
                                     ],
                                   ),
                                   const SizedBox(
                                     height: 5,
                                   ),
-                                  Row(
+                                 homeViewController.passwordCheck4.value? const SizedBox.shrink() : Row(
                                     children: [
                                       const Text(
                                         'One uppercase Character',
@@ -182,11 +180,9 @@ class LoginPage extends StatelessWidget {
                                       const SizedBox(
                                         width: 5,
                                       ),
-                                      Icon(Icons.check_circle,
-                                          color: homeViewController
-                                                  .passwordCheck4.value
-                                              ? Colors.green
-                                              : Colors.grey),
+                                      const Icon(Icons.info_outline,
+                                          size: 20,
+                                          color:  Colors.red),
                                     ],
                                   ),
                                   const SizedBox(
@@ -205,7 +201,7 @@ class LoginPage extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                       minimumSize: Size(Get.size.width,
                           50), // put the width and height you want
-                      primary: Colors.red),
+                      primary: const Color(0xffE50914)),
                   onPressed: homeViewController.isEnabled.value
                       ? () => Get.toNamed(Routes.navigation)
                       : null,
