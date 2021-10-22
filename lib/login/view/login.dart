@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:untitled/constants/validations.dart';
@@ -10,17 +11,13 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Scaffold(
         backgroundColor: Colors.grey.shade900,
-        appBar: AppBar(
-          elevation: 0,
-          backgroundColor: Colors.transparent,
-        ),
         body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 20),
           child: Column(
             children: [
               Expanded(
                 child: Obx(
-                  ()=> ListView(
+                  () => ListView(
                     children: [
                       Container(
                         padding: const EdgeInsets.symmetric(
@@ -49,8 +46,8 @@ class LoginPage extends StatelessWidget {
                           color: Colors.grey.shade300,
                         ),
                         controller: homeViewController.emailController,
-                        validator: (text) =>
-                            emailValidation(text!), // Validates the email address
+                        validator: (text) => emailValidation(
+                            text!), // Validates the email address
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         keyboardType: TextInputType.emailAddress,
                         decoration: InputDecoration(
@@ -86,6 +83,7 @@ class LoginPage extends StatelessWidget {
                         style: TextStyle(
                           color: Colors.grey.shade300,
                         ),
+                        scrollPadding:const EdgeInsets.only(bottom: 60),
                         controller: homeViewController.passwordController,
                         obscureText: true,
                         onChanged: (text) {
@@ -109,6 +107,21 @@ class LoginPage extends StatelessWidget {
                               color: Colors.grey.shade300,
                             )),
                       ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          const Text(
+                            'Forgot Password?',
+                            style: TextStyle(color: Color(0xffE50914)),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
                       homeViewController.showPasswordValidations
                               .value //shows password validations on interaction
                           ? Container(
@@ -120,71 +133,79 @@ class LoginPage extends StatelessWidget {
                               child: Column(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
-                                 homeViewController.passwordCheck1.value? const SizedBox.shrink() :Row(
-                                    children: [
-                                      const Text(
-                                        'More than 6 Characters',
-                                        style: TextStyle(color: Colors.white),
-                                      ),
-                                      const SizedBox(
-                                        width: 5,
-                                      ),
-                                      const Icon(Icons.info_outline,
-                                          size: 20,
-                                          color:  Colors.red),
-                                    ],
-                                  ),
+                                  homeViewController.passwordCheck1.value
+                                      ? const SizedBox.shrink()
+                                      : Row(
+                                          children: [
+                                            const Text(
+                                              'More than 6 Characters',
+                                              style: TextStyle(
+                                                  color: Colors.white),
+                                            ),
+                                            const SizedBox(
+                                              width: 5,
+                                            ),
+                                            const Icon(Icons.info_outline,
+                                                size: 20, color: Colors.red),
+                                          ],
+                                        ),
                                   const SizedBox(
                                     height: 5,
                                   ),
-                                 homeViewController.passwordCheck2.value? const SizedBox.shrink() : Row(
-                                    children: [
-                                      const Text(
-                                        'At least One Digit',
-                                        style: TextStyle(color: Colors.white),
-                                      ),
-                                      const SizedBox(
-                                        width: 5,
-                                      ),
-                                      const Icon(Icons.info_outline,
-                                          size: 20,
-                                          color:  Colors.red),
-                                    ],
-                                  ),
+                                  homeViewController.passwordCheck2.value
+                                      ? const SizedBox.shrink()
+                                      : Row(
+                                          children: [
+                                            const Text(
+                                              'At least One Digit',
+                                              style: TextStyle(
+                                                  color: Colors.white),
+                                            ),
+                                            const SizedBox(
+                                              width: 5,
+                                            ),
+                                            const Icon(Icons.info_outline,
+                                                size: 20, color: Colors.red),
+                                          ],
+                                        ),
                                   const SizedBox(
                                     height: 5,
                                   ),
-                                 homeViewController.passwordCheck3.value? const SizedBox.shrink() : Row(
-                                    children: [
-                                      const Text(
-                                        'One special Character',
-                                        style: TextStyle(color: Colors.white),
-                                      ),
-                                      const SizedBox(
-                                        width: 5,
-                                      ),
-                                     const Icon(Icons.info_outline,
-                                          size: 20,
-                                          color:  Colors.red),
-                                    ],
-                                  ),
+                                  homeViewController.passwordCheck3.value
+                                      ? const SizedBox.shrink()
+                                      : Row(
+                                          children: [
+                                            const Text(
+                                              'One special Character',
+                                              style: TextStyle(
+                                                  color: Colors.white),
+                                            ),
+                                            const SizedBox(
+                                              width: 5,
+                                            ),
+                                            const Icon(Icons.info_outline,
+                                                size: 20, color: Colors.red),
+                                          ],
+                                        ),
                                   const SizedBox(
                                     height: 5,
                                   ),
-                                 homeViewController.passwordCheck4.value? const SizedBox.shrink() : Row(
-                                    children: [
-                                      const Text(
-                                        'One uppercase Character',
-                                        style: TextStyle(color: Colors.white),
-                                      ),
-                                      const SizedBox(
-                                        width: 5,
-                                      ),
-                                      const Icon(Icons.info_outline,
-                                          size: 20,
-                                          color:  Colors.red),
-                                    ],
-                                  ),
+                                  homeViewController.passwordCheck4.value
+                                      ? const SizedBox.shrink()
+                                      : Row(
+                                          children: [
+                                            const Text(
+                                              'One uppercase Character',
+                                              style: TextStyle(
+                                                  color: Colors.white),
+                                            ),
+                                            const SizedBox(
+                                              width: 5,
+                                            ),
+                                            const Icon(Icons.info_outline,
+                                                size: 20, color: Colors.red),
+                                          ],
+                                        ),
                                   const SizedBox(
                                     height: 5,
                                   ),
